@@ -1,983 +1,639 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Iniyan AI Creatives | AI-Powered Digital Solutions</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-<style>
-/* ===== CSS VARIABLES ===== */
-:root {
-  --primary: #FFD700;
-  --primary-dark: #E6C200;
-  --secondary: #000000;
-  --secondary-light: #1a1a1a;
-  --accent: #25D366;
-  --text: #333333;
-  --text-light: #666666;
-  --bg: #fafafa;
-  --bg-card: #ffffff;
-  --shadow: 0 10px 40px rgba(0,0,0,0.12);
-  --shadow-hover: 0 20px 60px rgba(0,0,0,0.2);
-  --radius: 20px;
-  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* ===== RESET & BASE ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-  70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* ===== HEADER ===== */
-header {
-  background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 50%, #2d2d2d 100%);
-  background-size: 200% 200%;
-  animation: gradientShift 15s ease infinite;
-  color: white;
-  text-align: center;
-  padding: 100px 20px 80px;
-  position: relative;
-  overflow: hidden;
-}
-
-header::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
-  animation: gradientShift 20s ease infinite;
-}
-
-.logo-container {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 25px;
-  animation: float 3s ease-in-out infinite;
-}
-
-.logo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--primary);
-  box-shadow: 0 10px 30px rgba(255,215,0,0.3);
-  position: relative;
-  z-index: 2;
-  background: white;
-}
-
-.logo-ring {
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  border: 2px solid var(--primary);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-  opacity: 0.6;
-}
-
-header h1 {
-  font-size: 3.2rem;
-  font-weight: 800;
-  color: var(--primary);
-  margin-bottom: 15px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  position: relative;
-  z-index: 2;
-  animation: fadeInUp 0.8s ease;
-}
-
-header p {
-  font-size: 1.2rem;
-  max-width: 700px;
-  margin: 0 auto 35px;
-  opacity: 0.95;
-  position: relative;
-  z-index: 2;
-  animation: fadeInUp 0.8s ease 0.2s both;
-}
-
-/* ===== BUTTONS ===== */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 32px;
-  margin: 10px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  animation: fadeInUp 0.8s ease 0.4s both;
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
-  opacity: 0;
-  transition: var(--transition);
-  z-index: -1;
-}
-
-.btn:hover::before {
-  opacity: 1;
-}
-
-.btn-whatsapp {
-  background: linear-gradient(135deg, var(--accent), #128C7E);
-  color: white;
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-}
-
-.btn-whatsapp:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
-}
-
-.btn-portfolio {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: var(--secondary);
-  box-shadow: 0 8px 25px rgba(255,215,0,0.4);
-}
-
-.btn-portfolio:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 15px 40px rgba(255,215,0,0.6);
-}
-
-/* ===== SECTIONS ===== */
-section {
-  padding: 80px 8%;
-  position: relative;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 2.3rem;
-  font-weight: 700;
-  margin-bottom: 50px;
-  color: var(--secondary);
-  position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  border-radius: 2px;
-}
-
-/* ===== ABOUT ===== */
-.about {
-  max-width: 800px;
-  margin: auto;
-  text-align: center;
-  font-size: 1.1rem;
-  color: var(--text-light);
-  animation: fadeInUp 0.8s ease;
-}
-
-/* ===== SERVICES & CARDS ===== */
-.services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-}
-
-.card {
-  background: var(--bg-card);
-  padding: 30px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.05);
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  transform: scaleX(0);
-  transition: var(--transition);
-  transform-origin: left;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-hover);
-}
-
-.card:hover::before {
-  transform: scaleX(1);
-}
-
-.card h3 {
-  margin-bottom: 15px;
-  color: var(--secondary);
-  font-size: 1.3rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.card h3 i {
-  color: var(--primary);
-  font-size: 1.4rem;
-}
-
-.card p {
-  color: var(--text-light);
-  font-size: 0.95rem;
-}
-
-/* ===== STATS ===== */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 25px;
-}
-
-.stat-box {
-  background: var(--bg-card);
-  padding: 35px 25px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  text-align: center;
-  transition: var(--transition);
-}
-
-.stat-box:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-}
-
-.stat-box h2 {
-  color: var(--primary);
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 8px;
-}
-
-.stat-box p {
-  color: var(--text-light);
-  font-weight: 500;
-}
-
-/* ===== GALLERY ===== */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-}
-
-.gallery-item {
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  position: relative;
-}
-
-.gallery-item:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-hover);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  transition: var(--transition);
-}
-
-.gallery-item:hover img {
-  transform: scale(1.08);
-}
-
-.gallery-item h4 {
-  padding: 18px;
-  text-align: center;
-  font-weight: 600;
-  color: var(--secondary);
-  background: linear-gradient(to top, rgba(0,0,0,0.05), transparent);
-}
-
-/* ===== PROJECTS ===== */
-.project-card {
-  background: var(--bg-card);
-  padding: 30px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  margin-bottom: 30px;
-  transition: var(--transition);
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-}
-
-.project-card img {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
-
-.project-card h3 {
-  color: var(--secondary);
-  margin-bottom: 12px;
-  font-size: 1.4rem;
-}
-
-.project-card p {
-  color: var(--text-light);
-  margin-bottom: 20px;
-}
-
-.project-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 28px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: var(--secondary);
-  text-decoration: none;
-  border-radius: 50px;
-  font-weight: 600;
-  transition: var(--transition);
-  box-shadow: 0 5px 20px rgba(255,215,0,0.3);
-}
-
-.project-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(255,215,0,0.5);
-}
-
-/* ===== PRICING TABLE ===== */
-table {
-  width: 100%;
-  max-width: 700px;
-  margin: auto;
-  border-collapse: separate;
-  border-spacing: 0;
-  background: var(--bg-card);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-table th {
-  background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
-  color: var(--primary);
-  padding: 20px;
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-table td {
-  padding: 18px 20px;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-  text-align: center;
-  transition: var(--transition);
-}
-
-table tr:last-child td {
-  border-bottom: none;
-}
-
-table tr:hover td {
-  background: rgba(255,215,0,0.08);
-}
-
-table tr:hover td:first-child {
-  font-weight: 600;
-  color: var(--secondary);
-}
-
-/* ===== TESTIMONIALS ===== */
-.testimonial {
-  background: var(--bg-card);
-  padding: 30px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  margin-bottom: 25px;
-  position: relative;
-  border-left: 4px solid var(--primary);
-}
-
-.testimonial::before {
-  content: '"';
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  font-size: 4rem;
-  color: var(--primary);
-  opacity: 0.2;
-  font-family: Georgia, serif;
-}
-
-.testimonial .stars {
-  color: var(--primary);
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-}
-
-/* ===== CONTACT ===== */
-.contact {
-  text-align: center;
-  max-width: 500px;
-  margin: auto;
-}
-
-.contact p {
-  margin: 15px 0;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-
-.contact p i {
-  color: var(--primary);
-  font-size: 1.3rem;
-}
-
-/* ===== CTA SECTION ===== */
-.cta {
-  background: linear-gradient(135deg, var(--secondary) 0%, #1a1a1a 100%);
-  color: white;
-  text-align: center;
-  padding: 90px 20px;
-  position: relative;
-  overflow: hidden;
-}
-
-.cta::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 30% 50%, rgba(255,215,0,0.15) 0%, transparent 50%);
-}
-
-.cta h2 {
-  font-size: 2.2rem;
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 2;
-}
-
-.cta p {
-  margin-bottom: 35px;
-  font-size: 1.2rem;
-  opacity: 0.9;
-  position: relative;
-  z-index: 2;
-}
-
-.cta .btn {
-  position: relative;
-  z-index: 2;
-}
-
-/* ===== FOOTER ===== */
-footer {
-  background: var(--secondary);
-  color: white;
-  text-align: center;
-  padding: 25px;
-  font-size: 0.95rem;
-  opacity: 0.9;
-}
-
-/* ===== FLOATING WHATSAPP BUTTON ===== */
-.whatsapp-float {
-  position: fixed;
-  width: 65px;
-  height: 65px;
-  bottom: 25px;
-  right: 25px;
-  background: linear-gradient(135deg, var(--accent), #128C7E);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 32px;
-  text-decoration: none;
-  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
-  z-index: 9999;
-  transition: var(--transition);
-  animation: pulse 2.5s infinite;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.15) rotate(5deg);
-  box-shadow: 0 12px 40px rgba(37, 211, 102, 0.7);
-  animation: none;
-}
-
-.whatsapp-float i {
-  position: relative;
-  z-index: 2;
-}
-
-.whatsapp-float::after {
-  content: 'Chat Now';
-  position: absolute;
-  right: 75px;
-  background: white;
-  color: var(--secondary);
-  padding: 8px 15px;
-  border-radius: 30px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  white-space: nowrap;
-  opacity: 0;
-  transform: translateX(10px);
-  transition: var(--transition);
-  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-}
-
-.whatsapp-float:hover::after {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* ===== SCROLL TO TOP ===== */
-.scroll-top {
-  position: fixed;
-  bottom: 100px;
-  right: 25px;
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: var(--secondary);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.3rem;
-  text-decoration: none;
-  box-shadow: 0 5px 20px rgba(255,215,0,0.4);
-  z-index: 9998;
-  opacity: 0;
-  visibility: hidden;
-  transition: var(--transition);
-}
-
-.scroll-top.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.scroll-top:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(255,215,0,0.6);
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 2.3rem;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniyan AI Creatives | AI-Powered Digital Solutions</title>
   
-  header p {
-    font-size: 1rem;
-  }
+  <!-- Preconnect for faster loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   
-  .section-title {
-    font-size: 1.9rem;
-  }
+  <!-- Google Fonts with display=swap for faster rendering -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  .logo {
-    width: 120px;
-    height: 120px;
-  }
-  
-  section {
-    padding: 60px 5%;
-  }
-  
-  .btn {
-    padding: 12px 25px;
-    font-size: 0.95rem;
-    margin: 8px 5px;
-  }
-  
-  .whatsapp-float {
-    width: 58px;
-    height: 58px;
-    font-size: 28px;
-    bottom: 20px;
-    right: 20px;
-  }
-  
-  .whatsapp-float::after {
-    display: none;
-  }
-}
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --primary: #FFD700;
+      --primary-dark: #E6C200;
+      --secondary: #0a0a0a;
+      --secondary-light: #1a1a1a;
+      --accent: #25D366;
+      --text: #222;
+      --text-light: #666;
+      --bg: #fafafa;
+      --bg-card: #fff;
+      --shadow: 0 10px 40px rgba(0,0,0,0.1);
+      --shadow-hover: 0 20px 60px rgba(0,0,0,0.2);
+      --radius: 20px;
+      --transition: all 0.3s ease;
+    }
 
-/* ===== LOADING ANIMATION ===== */
-.loading {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--secondary);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
-  transition: opacity 0.5s ease;
-}
+    /* ===== RESET & BASE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      opacity: 1; /* Ensure visible immediately */
+    }
 
-.loading.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 70% { box-shadow: 0 0 0 20px rgba(37,211,102,0); } }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-.loader {
-  width: 60px;
-  height: 60px;
-  border: 4px solid rgba(255,215,0,0.2);
-  border-top: 4px solid var(--primary);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
+    /* ===== HEADER ===== */
+    header {
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 50%, #2d2d2d 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 15s ease infinite;
+      color: white;
+      text-align: center;
+      padding: 80px 20px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+      animation: gradientShift 20s ease infinite;
+    }
+    .logo-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite;
+    }
+    .logo {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--primary);
+      box-shadow: 0 10px 30px rgba(255,215,0,0.3);
+      background: white;
+      position: relative; z-index: 2;
+    }
+    .logo-ring {
+      position: absolute;
+      top: -10px; left: -10px; right: -10px; bottom: -10px;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+      opacity: 0.6;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 10px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      position: relative; z-index: 2;
+      animation: fadeInUp 0.6s ease;
+    }
+    header .tagline {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 15px;
+      position: relative; z-index: 2;
+    }
+    header p {
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 auto 25px;
+      opacity: 0.95;
+      position: relative; z-index: 2;
+      animation: fadeInUp 0.6s ease 0.2s both;
+    }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-</style>
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      margin: 8px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      animation: fadeInUp 0.6s ease 0.4s both;
+    }
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+      opacity: 0;
+      transition: var(--transition);
+      z-index: -1;
+    }
+    .btn:hover::before { opacity: 1; }
+    .btn-whatsapp {
+      background: linear-gradient(135deg, var(--accent), #128C7E);
+      color: white;
+      box-shadow: 0 8px 25px rgba(37,211,102,0.4);
+    }
+    .btn-whatsapp:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 35px rgba(37,211,102,0.6);
+    }
+    .btn-portfolio {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--secondary);
+      box-shadow: 0 8px 25px rgba(255,215,0,0.4);
+    }
+    .btn-portfolio:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 35px rgba(255,215,0,0.6);
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 60px 8%; position: relative; }
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: var(--secondary);
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -12px; left: 50%;
+      transform: translateX(-50%);
+      width: 60px; height: 3px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+
+    /* ===== SERVICES GRID ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+    .service-card {
+      background: var(--bg-card);
+      padding: 25px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      transform: scaleX(0);
+      transition: var(--transition);
+      transform-origin: left;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card h3 {
+      margin-bottom: 12px;
+      color: var(--secondary);
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .service-card h3 i { color: var(--primary); font-size: 1.3rem; }
+    .service-card ul { list-style: none; padding-left: 5px; }
+    .service-card li {
+      padding: 5px 0;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      position: relative;
+      padding-left: 20px;
+    }
+    .service-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* ===== INDUSTRIES ===== */
+    .industries {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+    .industry-tag {
+      background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+      color: var(--primary);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+    .industry-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255,215,0,0.3);
+    }
+
+    /* ===== PORTFOLIO ===== */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .portfolio-item {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+    }
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    .portfolio-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    .portfolio-item:hover img { transform: scale(1.05); }
+    .portfolio-item h4 {
+      padding: 15px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--secondary);
+      font-size: 0.95rem;
+    }
+
+    /* ===== STATS ===== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+    .stat-box {
+      background: var(--bg-card);
+      padding: 30px 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .stat-box:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    .stat-box h2 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+    .stat-box p {
+      color: var(--text-light);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    /* ===== WHY CHOOSE US ===== */
+    .features-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      text-align: center;
+      margin-top: 25px;
+    }
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .feature-item i {
+      font-size: 1.8rem;
+      color: var(--accent);
+    }
+    .feature-item span {
+      font-weight: 500;
+      color: var(--secondary);
+      font-size: 0.9rem;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-info {
+      text-align: center;
+      max-width: 500px;
+      margin: auto;
+    }
+    .contact-info p {
+      margin: 12px 0;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .contact-info i {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta {
+      background: linear-gradient(135deg, var(--secondary) 0%, #1a1a1a 100%);
+      color: white;
+      text-align: center;
+      padding: 70px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(255,215,0,0.15) 0%, transparent 50%);
+    }
+    .cta h2 {
+      font-size: 1.9rem;
+      margin-bottom: 15px;
+      position: relative; z-index: 2;
+    }
+    .cta p {
+      margin-bottom: 25px;
+      font-size: 1.1rem;
+      opacity: 0.9;
+      position: relative; z-index: 2;
+    }
+    .cta .btn { position: relative; z-index: 2; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--secondary);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* ===== FLOATING WHATSAPP BUTTON ===== */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px; height: 60px;
+      bottom: 20px; right: 20px;
+      background: linear-gradient(135deg, var(--accent), #128C7E);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      text-decoration: none;
+      box-shadow: 0 6px 25px rgba(37,211,102,0.5);
+      z-index: 9999;
+      transition: var(--transition);
+      animation: pulse 2.5s infinite;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 10px 35px rgba(37,211,102,0.7);
+      animation: none;
+    }
+    .whatsapp-float i { position: relative; z-index: 2; }
+
+    /* ===== SCROLL TO TOP ===== */
+    .scroll-top {
+      position: fixed;
+      bottom: 90px; right: 20px;
+      width: 45px; height: 45px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--secondary);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+      z-index: 9998;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    .scroll-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255,215,0,0.6);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      header .tagline { font-size: 1rem; }
+      header p { font-size: 0.95rem; }
+      .section-title { font-size: 1.7rem; }
+      .logo { width: 100px; height: 100px; }
+      section { padding: 50px 5%; }
+      .btn { padding: 10px 22px; font-size: 0.9rem; margin: 6px 4px; }
+      .whatsapp-float {
+        width: 55px; height: 55px;
+        font-size: 24px;
+        bottom: 15px; right: 15px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<!-- Loading Screen -->
-<div class="loading" id="loading">
-  <div class="loader"></div>
-</div>
 
 <!-- Header -->
 <header>
   <div class="logo-container">
     <div class="logo-ring"></div>
-    <img src="assets/logo/logo.png" alt="Iniyan AI Creatives" class="logo">
+    <img src="assets/logo/logo.png" alt="Iniyan AI Creatives" class="logo" onerror="this.src='https://via.placeholder.com/120/FFD700/000000?text=IAC'">
   </div>
-  
   <h1>INIYAN AI CREATIVES</h1>
-  
-  <p>
-    AI-Powered Social Media Creatives • Promotional Videos • 
-    Digital Visiting Cards • Business Websites • Branding Solutions
-  </p>
-  
+  <p class="tagline">AI-Powered Creatives for Every Business</p>
+  <p>Iniyan AI Creatives helps businesses build a strong digital presence through professional social media creatives, digital visiting cards, branding solutions, promotional videos, and business websites.</p>
   <div>
-    <a href="https://wa.me/917200893968" class="btn btn-whatsapp">
-      <i class="fab fa-whatsapp"></i> WhatsApp Now
-    </a>
-    <a href="#portfolio" class="btn btn-portfolio">
-      <i class="fas fa-briefcase"></i> View Portfolio
-    </a>
+    <a href="https://wa.me/917200893968" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Now</a>
+    <a href="#portfolio" class="btn btn-portfolio"><i class="fas fa-briefcase"></i> View Portfolio</a>
   </div>
 </header>
 
-<!-- About Section -->
+<!-- Services Section -->
 <section>
-  <h2 class="section-title">About Us</h2>
-  <div class="about">
-    <p>
-      Iniyan AI Creatives helps businesses build a powerful digital presence through 
-      professional social media creatives, promotional videos, digital visiting cards, 
-      branding solutions and business websites. We combine AI technology with creative 
-      design to deliver results that convert.
-    </p>
+  <h2 class="section-title">Our Services</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <h3><i class="fas fa-palette"></i> Social Media Creatives</h3>
+      <ul>
+        <li>Instagram Posts</li>
+        <li>WhatsApp Marketing Creatives</li>
+        <li>Facebook Promotions</li>
+        <li>Festival Posters</li>
+        <li>Business Promotion Designs</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <h3><i class="fas fa-video"></i> Promotional Videos</h3>
+      <ul>
+        <li>Business Promotions</li>
+        <li>Product Highlights</li>
+        <li>Service Showcases</li>
+        <li>Social Media Video Content</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <h3><i class="fas fa-id-card"></i> Digital Visiting Cards</h3>
+      <ul>
+        <li>Mobile Friendly Design</li>
+        <li>Click-to-Call Functionality</li>
+        <li>WhatsApp Integration</li>
+        <li>Google Maps Integration</li>
+        <li>Business Information Display</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <h3><i class="fas fa-globe"></i> Business Websites</h3>
+      <ul>
+        <li>Responsive Websites</li>
+        <li>Landing Pages</li>
+        <li>Business Portfolio Websites</li>
+        <li>Lead Generation Websites</li>
+        <li>WhatsApp Integration</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <h3><i class="fas fa-crown"></i> Branding Solutions</h3>
+      <ul>
+        <li>Business Branding</li>
+        <li>Logo Design</li>
+        <li>Marketing Creatives</li>
+        <li>Digital Presence Enhancement</li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<!-- Services Section -->
+<!-- Industries Section -->
 <section style="background: white;">
-  <h2 class="section-title">Our Services</h2>
-  <div class="services">
-    <div class="card">
-      <h3><i class="fas fa-palette"></i> Social Media Posters</h3>
-      <p>Instagram Posts, WhatsApp Creatives, Promotional Posters and Festival Designs tailored for your brand.</p>
-    </div>
-    <div class="card">
-      <h3><i class="fas fa-video"></i> Promotional Videos</h3>
-      <p>Business Promotions, Product Highlights and Marketing Videos that engage and convert.</p>
-    </div>
-    <div class="card">
-      <h3><i class="fas fa-id-card"></i> Digital Visiting Cards</h3>
-      <p>Click-to-Call, WhatsApp Integration and Google Maps Integration for instant connectivity.</p>
-    </div>
-    <div class="card">
-      <h3><i class="fas fa-globe"></i> Business Websites</h3>
-      <p>Responsive Websites, Landing Pages and Lead Generation Websites optimized for conversions.</p>
-    </div>
+  <h2 class="section-title">Industries We Serve</h2>
+  <div class="industries">
+    <span class="industry-tag"><i class="fas fa-plane"></i> Travel Agencies</span>
+    <span class="industry-tag"><i class="fas fa-building"></i> Real Estate Promoters</span>
+    <span class="industry-tag"><i class="fas fa-graduation-cap"></i> Training Institutes</span>
+    <span class="industry-tag"><i class="fas fa-store"></i> Small Businesses</span>
+    <span class="industry-tag"><i class="fas fa-rocket"></i> Startups</span>
+    <span class="industry-tag"><i class="fas fa-tools"></i> Local Service Providers</span>
+  </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio">
+  <h2 class="section-title">Portfolio</h2>
+  
+  <h3 style="text-align:center; margin: 35px 0 20px; color: var(--secondary); font-size: 1.5rem;">🧳 Travel Agency Creatives</h3>
+  <div class="portfolio-grid">
+    <div class="portfolio-item"><img src="assets/travel/ooty.jpg" alt="Ooty Tour" onerror="this.src='https://via.placeholder.com/300x180/FFD700/000?text=Ooty+Tour'"><h4>Ooty Tour Packages</h4></div>
+    <div class="portfolio-item"><img src="assets/travel/kerala.jpg" alt="Kerala Tour" onerror="this.src='https://via.placeholder.com/300x180/FFD700/000?text=Kerala+Tour'"><h4>Kerala Tour Packages</h4></div>
+    <div class="portfolio-item"><img src="assets/travel/goa.jpg" alt="Goa Holiday" onerror="this.src='https://via.placeholder.com/300x180/FFD700/000?text=Goa+Holiday'"><h4>Goa Holiday Packages</h4></div>
+    <div class="portfolio-item"><img src="assets/travel/temple.jpg" alt="Temple Tour" onerror="this.src='https://via.placeholder.com/300x180/FFD700/000?text=Temple+Tour'"><h4>Temple Tour Promotions</h4></div>
+  </div>
+  
+  <h3 style="text-align:center; margin: 45px 0 20px; color: var(--secondary); font-size: 1.5rem;">🏠 Real Estate Marketing</h3>
+  <div class="portfolio-grid">
+    <div class="portfolio-item"><img src="assets/realestate/villa.jpg" alt="Villa" onerror="this.src='https://via.placeholder.com/300x180/FFD700/000?text=Villa+Promo'"><h4>Villa Promotions</h4></div>
+    <div class="portfolio-item"><img src="assets/realestate/apartment.jpg" alt="Apartment" onerror="this.src='https://via.placeholder.com/300x180/FFD700/000?text=Apartment+Promo'"><h4>Apartment Promotions</h4></div>
+    <div class="portfolio-item"><img src="assets/realestate/plot.jpg" alt="Plot" onerror="this.src='https://via.placeholder.com/300x180/FFD700/000?text=Plot+Promo'"><h4>Residential Plot Promotions</h4></div>
+    <div class="portfolio-item"><img src="assets/realestate/investment.jpg" alt="Investment" onerror="this.src='https://via.placeholder.com/300x180/FFD700/000?text=Investment+Campaign'"><h4>Investment Campaigns</h4></div>
   </div>
 </section>
 
 <!-- Why Choose Us -->
+<section style="background: white;">
+  <h2 class="section-title">Why Choose Iniyan AI Creatives?</h2>
+  <div class="features-list">
+    <div class="feature-item"><i class="fas fa-tag"></i><span>Affordable Pricing</span></div>
+    <div class="feature-item"><i class="fas fa-bolt"></i><span>Fast Delivery</span></div>
+    <div class="feature-item"><i class="fas fa-palette"></i><span>Professional Designs</span></div>
+    <div class="feature-item"><i class="fas fa-mobile-alt"></i><span>Mobile-Friendly</span></div>
+    <div class="feature-item"><i class="fab fa-whatsapp"></i><span>WhatsApp Support</span></div>
+    <div class="feature-item"><i class="fas fa-cogs"></i><span>Customized Solutions</span></div>
+    <div class="feature-item"><i class="fas fa-robot"></i><span>AI-Powered Creatives</span></div>
+  </div>
+</section>
+
+<!-- Project Statistics -->
 <section>
-  <h2 class="section-title">Why Choose Us?</h2>
-  <div class="services">
-    <div class="card">
-      <h3><i class="fas fa-bolt"></i> Fast Delivery</h3>
-      <p>Quick turnaround time for all projects without compromising on quality.</p>
-    </div>
-    <div class="card">
-      <h3><i class="fas fa-lightbulb"></i> Creative Designs</h3>
-      <p>Modern and professional business creatives that stand out from the crowd.</p>
-    </div>
-    <div class="card">
-      <h3><i class="fas fa-mobile-alt"></i> Mobile Friendly</h3>
-      <p>All designs optimized for seamless experience across all devices.</p>
-    </div>
-    <div class="card">
-      <h3><i class="fas fa-headset"></i> Personal Support</h3>
-      <p>Direct WhatsApp support for every client with quick response times.</p>
-    </div>
+  <h2 class="section-title">Project Statistics</h2>
+  <div class="stats-grid">
+    <div class="stat-box"><h2>50+</h2><p>Social Media Creatives</p></div>
+    <div class="stat-box"><h2>5+</h2><p>Business Websites</p></div>
+    <div class="stat-box"><h2>10+</h2><p>Digital Visiting Cards</p></div>
+    <div class="stat-box"><h2>20+</h2><p>Marketing Solutions</p></div>
   </div>
 </section>
 
-<!-- Achievements -->
+<!-- Mission Section -->
 <section style="background: white;">
-  <h2 class="section-title">Our Achievements</h2>
-  <div class="stats">
-    <div class="stat-box">
-      <h2>20+</h2>
-      <p>Creative Designs</p>
-    </div>
-    <div class="stat-box">
-      <h2>2+</h2>
-      <p>Business Clients</p>
-    </div>
-    <div class="stat-box">
-      <h2>2+</h2>
-      <p>Website Projects</p>
-    </div>
-    <div class="stat-box">
-      <h2>100%</h2>
-      <p>Client Satisfaction</p>
-    </div>
+  <h2 class="section-title">Our Mission</h2>
+  <div style="max-width: 700px; margin: auto; text-align: center; font-size: 1.05rem; color: var(--text-light);">
+    <p>Helping businesses grow through creative design, digital branding, and modern online solutions.</p>
   </div>
 </section>
 
-<!-- Portfolio: Travel -->
-<section id="portfolio">
-  <h2 class="section-title">Travel Agency Creatives</h2>
-  <div class="gallery">
-    <div class="gallery-item">
-      <img src="assets/travel/ooty.jpg" alt="Ooty Tour Package">
-      <h4>Ooty Tour Package</h4>
-    </div>
-    <div class="gallery-item">
-      <img src="assets/travel/kerala.jpg" alt="Kerala Tour Package">
-      <h4>Kerala Tour Package</h4>
-    </div>
-    <div class="gallery-item">
-      <img src="assets/travel/goa.jpg" alt="Goa Holiday Package">
-      <h4>Goa Holiday Package</h4>
-    </div>
-    <div class="gallery-item">
-      <img src="assets/travel/temple-tour.jpg" alt="Temple Tour Package">
-      <h4>Temple Tour Package</h4>
-    </div>
-  </div>
-</section>
-
-<!-- Portfolio: Real Estate -->
-<section style="background: white;">
-  <h2 class="section-title">Real Estate Creatives</h2>
-  <div class="gallery">
-    <div class="gallery-item">
-      <img src="assets/realestate/villa.jpg" alt="Villa Promotion">
-      <h4>Villa Promotion</h4>
-    </div>
-    <div class="gallery-item">
-      <img src="assets/realestate/apartment.jpg" alt="Apartment Promotion">
-      <h4>Apartment Promotion</h4>
-    </div>
-    <div class="gallery-item">
-      <img src="assets/realestate/plot.jpg" alt="Residential Plot Promotion">
-      <h4>Residential Plot Promotion</h4>
-    </div>
-    <div class="gallery-item">
-      <img src="assets/realestate/investment.jpg" alt="Investment Campaign">
-      <h4>Investment Campaign</h4>
-    </div>
-  </div>
-</section>
-
-<!-- Website Portfolio -->
+<!-- Contact Section -->
 <section>
-  <h2 class="section-title">Website Portfolio</h2>
-  
-  <div class="project-card">
-    <img src="assets/websites/aura-beauty-lounge.png" alt="Aura Beauty Lounge">
-    <h3>Aura Beauty Lounge</h3>
-    <p>Responsive beauty studio website with WhatsApp integration and modern branding.</p>
-    <a href="https://aura-beauty-lounge.onrender.com/" target="_blank" class="project-btn">
-      <i class="fas fa-external-link-alt"></i> Visit Website
-    </a>
-  </div>
-  
-  <div class="project-card">
-    <img src="assets/websites/real-estate-card.png" alt="Real Estate Card">
-    <h3>Real Estate Digital Visiting Card</h3>
-    <p>Professional digital visiting card with WhatsApp, Call and Location integration.</p>
-    <a href="https://real-estate-digital-visiting-card.onrender.com/index.html" target="_blank" class="project-btn">
-      <i class="fas fa-external-link-alt"></i> Visit Website
-    </a>
-  </div>
-</section>
-
-<!-- Pricing -->
-<section style="background: white;">
-  <h2 class="section-title">Pricing</h2>
-  <table>
-    <tr>
-      <th>Service</th>
-      <th>Starting From</th>
-    </tr>
-    <tr>
-      <td>Poster Design</td>
-      <td>₹250</td>
-    </tr>
-    <tr>
-      <td>10 Poster Package</td>
-      <td>₹2,000</td>
-    </tr>
-    <tr>
-      <td>Digital Visiting Card</td>
-      <td>₹2,000</td>
-    </tr>
-    <tr>
-      <td>Business Website</td>
-      <td>₹5,000</td>
-    </tr>
-    <tr>
-      <td>Promotional Video</td>
-      <td>₹300</td>
-    </tr>
-  </table>
-</section>
-
-<!-- Testimonials -->
-<section>
-  <h2 class="section-title">Testimonials</h2>
-  <div class="testimonial">
-    <div class="stars">⭐⭐⭐⭐⭐</div>
-    <p>Professional designs and quick delivery for our property promotions. Highly recommended!</p>
-  </div>
-  <div class="testimonial">
-    <div class="stars">⭐⭐⭐⭐⭐</div>
-    <p>Attractive travel package creatives delivered on time. Great communication throughout.</p>
-  </div>
-</section>
-
-<!-- Contact -->
-<section style="background: white;">
-  <h2 class="section-title">Contact Us</h2>
-  <div class="contact">
-    <p><i class="fas fa-phone"></i> +91 72008 93968</p>
-    <p><i class="fab fa-whatsapp"></i> WhatsApp Available</p>
-    <p><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu</p>
-    <p><i class="fas fa-globe"></i> Iniyan AI Creatives</p>
+  <h2 class="section-title">Contact Information</h2>
+  <div class="contact-info">
+    <p><i class="fas fa-building"></i> <strong>Iniyan AI Creatives</strong></p>
+    <p><i class="fas fa-phone"></i> Phone / WhatsApp: <strong>+91 72008 93968</strong></p>
+    <p><i class="fas fa-map-marker-alt"></i> Location: Chennai, Tamil Nadu, India</p>
+    <p><i class="fas fa-handshake"></i> Available for Freelance Projects and Business Collaborations</p>
   </div>
 </section>
 
 <!-- CTA Section -->
 <section class="cta">
-  <h2>Ready to Promote Your Business?</h2>
-  <p>Let's Build Your Digital Presence Today.</p>
-  <a href="https://wa.me/917200893968" class="btn btn-whatsapp">
-    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-  </a>
+  <h2>Transform Your Business with AI-Powered Creatives</h2>
+  <p>Posters | Promotional Videos | Digital Visiting Cards | Business Websites | Branding Solutions</p>
+  <a href="https://wa.me/917200893968" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Start Your Project Today</a>
 </section>
 
 <!-- Footer -->
@@ -991,27 +647,15 @@ footer {
 </a>
 
 <!-- Scroll to Top Button -->
-<a href="#" class="scroll-top" id="scrollTop">
-  <i class="fas fa-arrow-up"></i>
-</a>
+<a href="#" class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></a>
 
 <!-- JavaScript -->
 <script>
-// Hide loading screen
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('loading').classList.add('hidden');
-  }, 800);
-});
-
-// Scroll to top button visibility
+// Scroll to top button logic
 const scrollTopBtn = document.getElementById('scrollTop');
 window.addEventListener('scroll', () => {
-  if (window.pageYOffset > 300) {
-    scrollTopBtn.classList.add('visible');
-  } else {
-    scrollTopBtn.classList.remove('visible');
-  }
+  if (window.pageYOffset > 300) scrollTopBtn.classList.add('visible');
+  else scrollTopBtn.classList.remove('visible');
 });
 
 // Smooth scroll for anchor links
@@ -1019,34 +663,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
-// Add fade-in animation on scroll
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-};
-
+// Simple fade-in on scroll (lightweight)
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.style.animation = `fadeInUp 0.6s ease ${entry.target.dataset.delay || 0}s both`;
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
       observer.unobserve(entry.target);
     }
   });
-}, observerOptions);
+}, { threshold: 0.1 });
 
-// Observe cards and sections
-document.querySelectorAll('.card, .gallery-item, .project-card, .stat-box').forEach((el, index) => {
+document.querySelectorAll('.service-card, .portfolio-item, .stat-box, .feature-item').forEach(el => {
   el.style.opacity = '0';
-  el.dataset.delay = (index % 4) * 0.1;
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   observer.observe(el);
 });
 </script>
